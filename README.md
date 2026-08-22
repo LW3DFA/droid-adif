@@ -41,10 +41,10 @@ El programa procesa estas entradas aplicando los siguientes pasos:
 
 📖 Guía Paso a Paso  
 1️⃣ Abre la aplicación y haz clic en Seleccionar para cargar tu log de APRSDroid.  
-2️⃣ Ingresa tu Indicativo.
+2️⃣ Ingresa tu Indicativo.  
 3️⃣ Selecciona la frecuencia APRS (144.390 MHz o 430.930 MHz en Argentina).  
 4️⃣ Ajusta la diferencia horaria (Offset). Por defecto es 3 (UTC-3 / Argentina).  
-4️⃣ Presiona GENERAR ADIF.  
+5️⃣ Presiona GENERAR ADIF.  
 
 
 Al finalizar, la aplicación generará automáticamente un archivo de igual nombre.adi  
