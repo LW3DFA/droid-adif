@@ -73,4 +73,4 @@ Soporte multi-idioma próximamente.
 
 ```bash
 # Clonar o descargar el repositorio y ejecutar:
-python droid-adif.py
+run.bat o también desde la consola python droid-adif.py 
