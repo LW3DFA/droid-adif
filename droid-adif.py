@@ -5,7 +5,7 @@
 # Archivo     : droid-adif.py
 # Autor       : Fernando - LW3DFA
 # Proyecto    : 
-# Versión     : 1.3 Modern UI 2026
+# Versión     : 1.4 Modern UI 2026
 # Descripción : Convierte Log APRSDROID en un ADIF
 # =================================================================
 
@@ -19,6 +19,8 @@ from PIL import Image, ImageTk
 APP_TITLE = "APRSdroid LOG → ADIF"
 DEFAULT_STATION = "LW3DFA"
 DEFAULT_FREQ = "144.390"
+DEFAULT_BAND = "2M"
+DEFAULT_RST_SENT = "59"
 
 class RoundedButton(tk.Canvas):
     """Botón vectorial con esquinas redondeadas sin bucles de redimensionamiento."""
@@ -203,7 +205,9 @@ def generate_adif(records, station_callsign, utc_offset, freq):
             adif_field("QSO_DATE", dt.strftime("%Y%m%d")),
             adif_field("CALL", q["call"]),
             adif_field("TIME_ON", dt.strftime("%H%M")),
-            adif_field("MODE", "APRS"),
+            adif_field("BAND", DEFAULT_BAND),
+            adif_field("RST_SENT", DEFAULT_RST_SENT),
+            adif_field("MODE", "PKT"),
         ]
         if freq:
             fields.append(adif_field("FREQ", freq))
@@ -218,7 +222,7 @@ class App:
     def __init__(self, root):
         self.root = root
         self.root.title(APP_TITLE)
-        self.root.geometry("580x680")  # Aumentado para acomodar la frecuencia
+        self.root.geometry("580x680")
         self.root.resizable(False, False)
         
         self.bg_color = "#F8FAFC"
@@ -266,7 +270,6 @@ class App:
         main = ttk.Frame(self.root, padding=20)
         main.pack(fill="both", expand=True)
 
-        # Header / Título Principal + Logo
         header_frame = ttk.Frame(main)
         header_frame.pack(fill="x", pady=(0, 15))
 
@@ -434,6 +437,8 @@ class App:
                 f"Archivo: {path.name}\n"
                 f"Indicativo Estación: {strip_ssid(station)}\n"
                 f"Frecuencia: {freq_str}\n"
+                f"Banda: {DEFAULT_BAND}\n"
+                f"RST Enviado: {DEFAULT_RST_SENT}\n"
                 f"Ajuste UTC: +{utc_offset:g} hs\n\n"
                 f"Líneas válidas parseadas: {len(records)}\n"
                 f"QSOs únicos exportados: {qso_count}\n\n"

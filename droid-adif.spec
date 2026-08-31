@@ -8,7 +8,7 @@ a = Analysis(
     ['droid-adif.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('logo.png', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
